@@ -9,7 +9,11 @@ static TITLE: &str = "Noise Test - Press ESC to exit";
 fn main() -> minifb::Result<()> {
     let mut canvas = Canvas::new(TITLE, WIDTH, HEIGHT)?;
     while canvas.is_open() && !canvas.is_keydown(Key::Escape) {
-        canvas.circle((80, 80), 30, RED);
+        for x in (0..WIDTH).step_by(10) {
+            for y in (0..HEIGHT).step_by(10) {
+                canvas.circle((x as isize, y as isize), 3, RED);
+            }
+        }
         canvas.udpate();
 
         canvas.keys(|t| match t {
