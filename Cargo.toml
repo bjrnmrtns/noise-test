@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 kiss2d = "0.1.6"
+noise = "0.7"
