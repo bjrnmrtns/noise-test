@@ -1,0 +1,8 @@
+[package]
+name = "noise_test"
+version = "0.1.0"
+authors = ["Bjorn Martens <bjorn@expeditious.nl>"]
+edition = "2018"
+
+[dependencies]
+kiss2d = "0.1.6"
