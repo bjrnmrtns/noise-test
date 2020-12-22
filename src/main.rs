@@ -2,6 +2,10 @@ use kiss2d::clrs::*;
 use kiss2d::{Canvas, Key, minifb};
 use noise::{Perlin, NoiseFn, Fbm, Worley, OpenSimplex, Value, MultiFractal, RangeFunction};
 
+use poisson2d::{Builder, Type, algorithm};
+use rand::{SeedableRng};
+use rand::rngs::SmallRng;
+
 const WIDTH: usize = 1280;
 const HEIGHT: usize = 720;
 
@@ -40,11 +44,14 @@ fn terrace_selector(value: f64) -> u32 {
     RED
 }
 
-x
 // add poison disc sampling via own random numbers over multiple tiles, try poisson per tile and see if aritifacts are
 // visible when rendering multiple tiles (poission via elimination of random points
 
 fn main() -> minifb::Result<()> {
+    let poisson =
+        Builder::with_radius(0.1, Type::Normal)
+            .build(SmallRng::from_entropy(), algorithm::Ebeida);
+    println!("{:?}", poisson.generate());
     let fbm = Fbm::new().set_octaves(6).set_frequency(0.001).set_lacunarity(2.09).set_persistence(1.0);
     let worley = Worley::new().set_frequency(0.001).set_displacement(1.0).enable_range(true).set_range_function(RangeFunction::Manhattan);
     let mut canvas = Canvas::new(TITLE, WIDTH, HEIGHT)?;
