@@ -7,5 +7,4 @@ edition = "2018"
 [dependencies]
 kiss2d = "0.1"
 noise = "0.7"
-rand = "0.7"
-poisson2d = "0.1.0"
+rand = "0.8"
